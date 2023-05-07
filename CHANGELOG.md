@@ -2,6 +2,8 @@
 
 ## v1.1.1 - 2022-5-07
 * Updated tests to use `fetch`
+* Updated `path-to-regexp` to v6.2.1
+
 ## v1.1.0 - 2020-9-05
 
 ### Changes
