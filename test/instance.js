@@ -1,12 +1,22 @@
-import { Picker } from 'meteor/storyteller:picker';
-// TODO replace HTTP with fetch
-import { HTTP } from 'meteor/http';
-import { Random } from 'meteor/random';
-import { Meteor } from 'meteor/meteor';
+import { Picker } from 'meteor/communitypackages:picker'
+import { fetch } from 'meteor/fetch'
+import { Meteor } from 'meteor/meteor'
+import { Random } from 'meteor/random'
 
 function getPath(path) {
   return Meteor.absoluteUrl(path);
 }
+
+async function getAsync (url, options) {
+  try {
+    const response = await fetch(url, options)
+    return await response.text()
+  } catch (e) {
+    throw new Meteor.Error(500, e.message)
+  }
+}
+
+const get = Meteor.wrapAsync(getAsync)
 
 Tinytest.add('normal route', function(test) {
   const id = Random.id();
@@ -14,8 +24,10 @@ Tinytest.add('normal route', function(test) {
     res.end("done");
   });
 
-  const res = HTTP.get(getPath(id));
-  test.equal(res.content, 'done');
+  get(getPath(id), { method: 'GET' }, (error, success) => {
+    test.equal(success, 'done');
+  });
+
 });
 
 Tinytest.add('with params', function(test) {
@@ -25,8 +37,9 @@ Tinytest.add('with params', function(test) {
     res.end(params.id);
   });
 
-  const res = HTTP.get(getPath(`post/${id}`));
-  test.equal(res.content, id);
+  get(getPath(`post/${id}`), { method: 'GET' }, (error, res) => {
+    test.equal(res, id);
+  });
 });
 
 Tinytest.add('filter only POST', function(test) {
@@ -39,11 +52,15 @@ Tinytest.add('filter only POST', function(test) {
     res.end("done");
   });
 
-  const res1 = HTTP.get(getPath(`/${id}`));
-  test.isFalse(res1.content === "done");
+  get(getPath(`/${id}`), { method: 'GET' }, (error, res) => {
+    test.isFalse(res === "done");
+  });
 
-  const res2 = HTTP.post(getPath(`/${id}`));
-  test.isTrue(res2.content === "done");
+
+  get(getPath(`/${id}`), { method: 'POST' }, (error, res) => {
+    test.isTrue(res === "done");
+  });
+
 });
 
 Tinytest.add('query strings', function(test) {
@@ -52,8 +69,10 @@ Tinytest.add('query strings', function(test) {
     res.end("" + params.query.aa);
   });
 
-  const res = HTTP.get(getPath(`/${id}?aa=10&bb=10`));
-  test.equal(res.content, "10");
+  get(getPath(`/${id}?aa=10&bb=10`), { method: 'GET' }, (error, res) => {
+    test.equal(res, "10");
+  });
+
 });
 
 Tinytest.add('middlewares', function(test) {
@@ -70,8 +89,10 @@ Tinytest.add('middlewares', function(test) {
     res.end(req.middlewarePass);
   });
 
-  const res = HTTP.get(getPath(`/${id}?aa=10`));
-  test.equal(res.content, "ok");
+  get(getPath(`/${id}?aa=10`), { method: 'GET' }, (error, res) => {
+    test.equal(res, "ok");
+  });
+
 });
 
 Tinytest.add('middlewares - with filtered routes', function(test) {
@@ -93,8 +114,10 @@ Tinytest.add('middlewares - with filtered routes', function(test) {
     res.end(req.middlewarePass);
   });
 
-  const res = HTTP.get(getPath(path));
-  test.equal(res.content, "ok");
+  get(getPath(path), { method: 'GET' }, (error, res) => {
+    test.equal(res, "ok");
+  });
+
 });
 
 
@@ -125,9 +148,13 @@ Tinytest.add('middlewares - with several filtered routes', function(test) {
     res.end(req.result+'');
   });
 
-  const res1 = HTTP.get(getPath(path1));
-  test.equal(res1.content, "11");
+  get(getPath(path1), { method: 'GET' }, (error, res) => {
+    test.equal(res, "11");
+  });
 
-  const res2 = HTTP.get(getPath(path2));
-  test.equal(res2.content, "12");
+
+  get(getPath(path2), { method: 'GET' }, (error, res) => {
+    test.equal(res, "12");
+  });
+
 });

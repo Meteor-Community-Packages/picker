@@ -23,6 +23,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   configurePackage(api);
   api.use('communitypackages:picker', 'server');
-  api.use(['tinytest', 'http', 'random'], 'server');
+  api.use(['tinytest', 'fetch', 'random'], 'server');
   api.mainModule('test/instance.js', 'server');
 });

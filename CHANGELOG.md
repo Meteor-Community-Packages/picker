@@ -1,5 +1,7 @@
 # Changelog
 
+## v1.1.1 - 2022-5-07
+* Updated tests to use `fetch`
 ## v1.1.0 - 2020-9-05
 
 ### Changes
