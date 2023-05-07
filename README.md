@@ -1,5 +1,3 @@
-[![](https://api.travis-ci.org/communitypackages/picker.svg)](https://travis-ci.org/communitypackages/picker)
-
 # Picker - Server Side Router for Meteor
 
 Picker is an easy to use server side router for Meteor. This router respect others. So, you can use Iron Router and other routers and middlewares along side with this.
