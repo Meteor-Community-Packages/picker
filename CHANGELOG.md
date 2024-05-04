@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0 - 2024-05-04
+* Deprecating the package as from Meteor 3.0 onwards it is no longer needed. You can use express in Meteor 3 via the WebApp package and do routing like you would with Picker.
+* Added instance setup for Meteor 3 in case we move towards compatibility version.
+* Updated `path-to-regexp` to v6.2.2
+
 ## v1.1.1 - 2022-5-07
 * Updated tests to use `fetch`
 * Updated `path-to-regexp` to v6.2.1
