@@ -2,6 +2,10 @@
 
 Picker is an easy to use server side router for Meteor. This router respect others. So, you can use Iron Router and other routers and middlewares along side with this.
 
+## DEPRECATED
+As of Meteor 3, Picker is deprecated as the functionality that has been provided by 
+it is now part of Meteor itself and the Express server that is baked into it.
+
 ## Install
 
 ~~~
