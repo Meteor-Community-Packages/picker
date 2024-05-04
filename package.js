@@ -1,7 +1,7 @@
 Package.describe({
   name: 'communitypackages:picker',
   summary: 'Server Side Router for Meteor',
-  version: '1.2.0',
+  version: '2.0.0-alpha.0',
   git: 'https://github.com/Meteor-Community-Packages/picker.git',
   documentation: 'README.md',
   deprecated: true
@@ -12,7 +12,7 @@ Npm.depends({
 });
 
 function configurePackage(api) {
-  api.versionsFrom(['1.9']);
+  api.versionsFrom(['3.0-rc.0']);
   api.use(['webapp', 'ecmascript', 'url'], 'server');
 }
 
