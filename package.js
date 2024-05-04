@@ -12,8 +12,8 @@ Npm.depends({
 });
 
 function configurePackage(api) {
-  api.versionsFrom(['3.0-rc.0']);
-  api.use(['webapp', 'ecmascript', 'url'], 'server');
+  api.versionsFrom('3.0-rc.0');
+  api.use(['ecmascript', 'webapp', 'url'], 'server');
 }
 
 Package.onUse(function(api) {
@@ -24,6 +24,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   configurePackage(api);
   api.use('communitypackages:picker', 'server');
-  api.use(['tinytest', 'fetch', 'random'], 'server');
+  api.use(['ecmascript', 'tinytest', 'fetch', 'random'], 'server');
   api.mainModule('test/instance.js', 'server');
 });
