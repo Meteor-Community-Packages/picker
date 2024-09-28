@@ -7,18 +7,7 @@ jobs:
     strategy:
       matrix:
         meteorRelease:
-          - '--release 1.12.1'
-          - '--release 2.1.1'
-          - '--release 2.2.3'
-          - '--release 2.3.5'
-          - '--release 2.4'
-          - '--release 2.5.8'
-          - '--release 2.6.1'
-          - '--release 2.7.3'
-          - '--release 2.8.1'
-          - '--release 2.9.1'
-          - '--release 2.10.0'
-          - '--release 2.11.0'
+          - '--release 3.0.3'
           # Latest version
           -
     steps:
@@ -28,7 +17,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '20.x'
 
       - name: Install Dependencies
         run: |
