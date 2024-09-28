@@ -1,10 +1,7 @@
 import { Picker } from 'meteor/communitypackages:picker';
-// TODO replace HTTP with fetch
-import { HTTP } from 'meteor/http';
 import { Random } from 'meteor/random';
 import { Meteor } from 'meteor/meteor';
 import { fetch } from 'meteor/fetch';
-import { check } from 'meteor/check';
 import { should, assert } from 'chai';
 
 should();
