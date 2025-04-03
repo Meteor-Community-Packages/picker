@@ -4,7 +4,6 @@ Package.describe({
   version: '2.0.0-beta.0',
   git: 'https://github.com/Meteor-Community-Packages/picker.git',
   documentation: 'README.md',
-  deprecated: true
 });
 
 Npm.depends({
