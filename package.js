@@ -1,7 +1,7 @@
 Package.describe({
   name: 'communitypackages:picker',
   summary: 'Server Side Router for Meteor',
-  version: '2.0.0-beta.0',
+  version: '2.0.0-beta.1',
   git: 'https://github.com/Meteor-Community-Packages/picker.git',
   documentation: 'README.md',
 });
