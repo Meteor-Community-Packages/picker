@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.0.0 - 2026-07-15
+
+* Meteor 3 compatibility.
+* Removed the v1.2.0 deprecation notice — Picker is supported again and is relied on by
+  packages such as `communitypackages:fast-render` for server route handling on Meteor 3.
+* Removed an unused import and an unnecessary deprecation warning.
+
 ## v1.2.0 - 2024-05-04
 * Deprecating the package as from Meteor 3.0 onwards it is no longer needed. You can use express in Meteor 3 via the WebApp package and do routing like you would with Picker.
 * Added instance setup for Meteor 3 in case we move towards compatibility version.
