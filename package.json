@@ -8,11 +8,12 @@
     "test": "test"
   },
   "scripts": {
+    "publish-release": "npx rimraf ./node_modules && meteor publish && meteor npm i --only=dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "chai": "^5.1.1"
   }
 }
